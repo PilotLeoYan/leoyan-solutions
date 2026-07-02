@@ -83,6 +83,19 @@ graph TD
 
 ## Code
 
+=== "Python"
+
+    ```python
+    w = int(input())
+    
+    if w == 2:
+        print("NO")
+    elif w & 1:
+        print("NO")
+    else:
+        print("YES")
+    ```
+
 === "C++17"
 
     ```cpp
