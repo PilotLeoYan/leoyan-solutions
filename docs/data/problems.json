@@ -1,0 +1,16 @@
+[
+  {
+    "id": "4A",
+    "title": "4A – Watermelon",
+    "url": "problems/4A-watermelon/",
+    "slug": "4A-watermelon",
+    "problem_url": "https://codeforces.com/problemset/problem/4/A",
+    "difficulty": 800,
+    "difficulty_label": "Newbie",
+    "tags": [
+      "math",
+      "greedy"
+    ],
+    "date_solved": "2025-Aug-21"
+  }
+]

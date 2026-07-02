@@ -1,0 +1,96 @@
+{% extends "main.html" %}
+{# remove default toc + nav on homepage #}
+{% block tabs %}{{ super() }}{% endblock%}
+{% block content %}
+<div class="cf-home" data-md-component="content">
+    {#  Profile card #}
+    <section class="cf-profile">
+        <div class="cf-profile__card">
+            <img
+                class="cf-profile__avatar"
+                src="{{ config.extra.author.avatar }}"
+                alt="{{ config.extra.author.name }} avatar"
+                loading="lazy"
+                width="1000px"
+            />
+            <div class="cf-profile__info">
+                <h1>
+                    LeoYan CF Solutions
+                </h1>
+                <p class="cf-profile__subtitle">
+                    {{ config.extra.author.bio }}
+                </p>
+                <div class="cf-profile__stats" id="hero-stats">
+                    <div class="cf-stat">
+                        <span class="cf-stat__num" id="stat-total">–</span>
+                        <span class="cf-stat__label">Problems</span>
+                    </div>
+                    <div class="cf-stat">
+                        <span class="cf-stat__num" id="stat-tags">–</span>
+                        <span class="cf-stat__label">Topics</span>
+                    </div>
+                    <div class="cf-stat">
+                        <span class="cf-stat__num" id="stat-max-diff">–</span>
+                        <span class="cf-stat__label">Max Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Charts #}
+    <section class="cf-section cf-charts-section">
+        <h2 class="cf-section__title">Dashboard</h2>
+        <div class="cf-charts-grid">
+            <div class="cf-chart-card">
+                <h3 class="cf-chart-card__title">Difficulty Distribution</h3>
+                <div class="cf-chart-card__wrap">
+                    <canvas id="difficulty-chart"></canvas>
+                </div>
+            </div>
+            <div class="cf-chart-card">
+                <h3 class="cf-chart-card__title">Top Topics</h3>
+                <div class="cf-chart-card__wrap">
+                    <canvas id="tags-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Tag filter #}
+    <section class="cf-section cf-filter-section">
+        <h2 class="cf-section__title">Browse by Topic</h2>
+        <div
+            class="cf-tag-bar"
+            id="tag-filter"
+            role="group"
+            aria-label="Filter by topic"
+        ></div>
+    </section>
+
+    {# Problem list #}
+    <section class="cf-section cf-problems-section">
+        <div class="cf-problems-header">
+            <h2 class="cf-section__title" style="margin-bottom: 0">
+                Solutions
+            </h2>
+            <div class="cf-search-wrap">
+                <input
+                    class="cf-search"
+                    id="cf-search"
+                    type="search"
+                    placeholder="Search problems…"
+                    aria-label="Search problems"
+                />
+            </div>
+        </div>
+        <div class="cf-problems-empty" id="cf-empty" hidden>
+            No problems match the current filter.
+        </div>
+        <div class="cf-problems-grid" id="problems-grid"></div>
+    </section>
+</div>
+{% endblock %}
+{# Skip toc sidebar #}
+{% block sidebar %}
+{% endblock %}
