@@ -190,7 +190,7 @@
             {
               label: "Problems",
               data: tagCounts.map(([, c]) => c),
-              backgroundColor: "rgba(124,58,237,.75)",
+              backgroundColor: "rgba(79,70,229,.75)",
               borderRadius: 5,
             },
           ],
