@@ -172,7 +172,8 @@
         options: {
           plugins: { legend: { position: "bottom", labels: { padding: 12 } } },
           cutout: "62%",
-          maintainAspectRatio: true,
+          responsive: true,
+          maintainAspectRatio: false,
         },
       });
     }
