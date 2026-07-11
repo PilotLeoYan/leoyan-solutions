@@ -59,6 +59,14 @@ plugins:
   - tags: {}
   - minify:
       minify_html: true
+      minify_js: true
+      minify_css: true
+      js_files:
+        - javascripts/extra.js
+        - javascripts/code-runner.js
+        - javascripts/mathjax.js
+      css_files:
+        - stylesheets/extra.css
 
 hooks:
   - scripts/generate_data.py
