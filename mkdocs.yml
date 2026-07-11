@@ -110,7 +110,6 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
-  - https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js
   - javascripts/extra.js
   - javascripts/code-runner.js
 

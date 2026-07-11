@@ -11,10 +11,22 @@
   let pyodideReady    = null;   // promise
   let pyodideInstance = null;
 
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) return resolve();
+      const s = document.createElement("script");
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error("Failed to load " + src));
+      document.head.appendChild(s);
+    });
+  }
+
   /* ── Load Pyodide lazily ─────────────────────────────────────────────── */
   function ensurePyodide() {
     if (pyodideReady) return pyodideReady;
-    pyodideReady = loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/" })
+    pyodideReady = loadScript("https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js")
+      .then(() => loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/" }))
       .then((py) => { pyodideInstance = py; return py; })
       .catch((err) => { console.error("[CF] Pyodide load failed:", err); throw err; });
     return pyodideReady;
