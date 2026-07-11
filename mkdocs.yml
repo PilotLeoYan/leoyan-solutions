@@ -124,10 +124,7 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Problems:
-    - problems/index.md
-    - A - Math & Greedy:
-      - problems/4A-watermelon.md
+  - Problems: problems/index.md
   - About: about.md
 
 not_in_nav: |
