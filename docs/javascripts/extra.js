@@ -172,7 +172,8 @@
         options: {
           plugins: { legend: { position: "bottom", labels: { padding: 12 } } },
           cutout: "62%",
-          maintainAspectRatio: true,
+          responsive: true,
+          maintainAspectRatio: false,
         },
       });
     }
@@ -189,7 +190,7 @@
             {
               label: "Problems",
               data: tagCounts.map(([, c]) => c),
-              backgroundColor: "rgba(124,58,237,.75)",
+              backgroundColor: "rgba(79,70,229,.75)",
               borderRadius: 5,
             },
           ],
@@ -216,6 +217,26 @@
       .replace(/>/g, "&gt;");
   }
 
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) return resolve();
+      const s = document.createElement("script");
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error("Failed to load " + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  let chartJSReady = null;
+  function ensureChartJs() {
+    if (typeof Chart !== "undefined") return Promise.resolve();
+    if (!chartJSReady) {
+      chartJSReady = loadScript("https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js");
+    }
+    return chartJSReady;
+  }
+
   /* ── Bootstrap ───────────────────────────────────────────────────────── */
   function init() {
     // Only run on home page (template: home.html has #hero-stats)
@@ -228,10 +249,11 @@
         renderStats();
         renderTagFilter();
         renderProblems();
-        renderCharts();
+        return ensureChartJs();
       })
+      .then(() => renderCharts())
       .catch((err) => {
-        console.warn("[CF] Could not load problems.json:", err);
+        console.warn("[CF] Could not load dashboard:", err);
       });
 
     // Search input

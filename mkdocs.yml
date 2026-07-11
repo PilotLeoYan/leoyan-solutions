@@ -8,14 +8,14 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   custom_dir: docs/overrides
-  favicon: assets/favicon.png
+  favicon: assets/favicon.svg
 
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep-purple
-      accent: cyan
+      primary: white
+      accent: indigo
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
@@ -23,8 +23,8 @@ theme:
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep-purple
-      accent: cyan
+      primary: black
+      accent: indigo
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
@@ -59,6 +59,14 @@ plugins:
   - tags: {}
   - minify:
       minify_html: true
+      minify_js: true
+      minify_css: true
+      js_files:
+        - javascripts/extra.js
+        - javascripts/code-runner.js
+        - javascripts/mathjax.js
+      css_files:
+        - stylesheets/extra.css
 
 hooks:
   - scripts/generate_data.py
@@ -108,9 +116,6 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
-  - https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js
   - javascripts/extra.js
   - javascripts/code-runner.js
 
@@ -119,10 +124,7 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Problems:
-    - problems/index.md
-    - A - Math & Greedy:
-      - problems/4A-watermelon.md
+  - Problems: problems/index.md
   - About: about.md
 
 not_in_nav: |
