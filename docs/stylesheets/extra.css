@@ -429,6 +429,88 @@
   content: "🔢 ";
 }
 
+/* ── Calculator page ────────────────────────────────────────────────────── */
+.cf-calc__field {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-size: .85rem;
+}
+
+.cf-calc__field input[type="number"] {
+  padding: .45rem .7rem;
+  border: 1.5px solid var(--cf-border);
+  border-radius: 6px;
+  background: var(--cf-surface);
+  color: inherit;
+  font-family: inherit;
+  outline: none;
+}
+
+.cf-calc__field input[type="number"]:focus { border-color: var(--cf-tag-active); }
+
+.cf-calc__field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  grid-column: 1 / -1;
+}
+
+.cf-calc__field--checkbox label {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+  font-size: .85rem;
+}
+
+.cf-calc__result {
+  background: var(--cf-tag-bg);
+  color: var(--cf-tag-color);
+  border-radius: var(--cf-radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+.cf-calc__table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--cf-card-bg);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius);
+  overflow: hidden;
+}
+
+.cf-calc__table th,
+.cf-calc__table td {
+  padding: .6rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--cf-border);
+  font-size: .85rem;
+}
+
+.cf-calc__table th {
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: .72rem;
+  color: var(--cf-muted);
+}
+
+.cf-calc__table tr:last-child td { border-bottom: none; }
+
+.cf-calc-status {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  padding: .15rem .6rem;
+  border-radius: 100px;
+  font-size: .72rem;
+}
+
+.cf-calc-status--pass { background: #16a34a; color: #fff; }
+.cf-calc-status--fail { background: #dc2626; color: #fff; }
+
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .cf-profile__card { flex-direction: column; text-align: center; padding: 1.5rem; }
@@ -436,4 +518,5 @@
   .cf-profile__stats { justify-content: center; gap: 1.5rem; }
   .cf-problems-header { flex-direction: column; align-items: flex-start; }
   .cf-search { width: 100%; }
+  .cf-calc__field--checkbox { flex-direction: row; }
 }

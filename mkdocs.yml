@@ -65,6 +65,7 @@ plugins:
         - javascripts/extra.js
         - javascripts/code-runner.js
         - javascripts/mathjax.js
+        - javascripts/calculator.js
       css_files:
         - stylesheets/extra.css
 
@@ -118,6 +119,7 @@ extra_javascript:
   - javascripts/mathjax.js
   - javascripts/extra.js
   - javascripts/code-runner.js
+  - javascripts/calculator.js
 
 extra_css:
   - stylesheets/extra.css
@@ -125,6 +127,7 @@ extra_css:
 nav:
   - Home: index.md
   - Problems: problems/index.md
+  - Calculator: calculator.md
   - About: about.md
 
 not_in_nav: |
